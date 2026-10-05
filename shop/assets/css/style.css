@@ -327,6 +327,9 @@ img { max-width: 100%; display: block; }
 /* ==================== 弹窗 ==================== */
 .hd-layer { position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .hd-layer-mask { position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .25s; }
+/* 商品封面点击放大（原站行为） */
+.cover-zoom { position: fixed; inset: 0; z-index: 998; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; opacity: 1; cursor: zoom-out; }
+.cover-zoom img { max-width: 92%; max-height: 92%; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
 .hd-layer.show .hd-layer-mask { opacity: 1; }
 .hd-layer-body {
     position: relative; background: #fff; border-radius: 16px;

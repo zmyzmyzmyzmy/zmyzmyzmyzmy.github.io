@@ -23,6 +23,12 @@ const I18N = {
 };
 const i18n = (k) => I18N.t(k);
 
+/* 语言简码（对应原站按钮上显示的 简/繁/EN/日） */
+function langShort() {
+    const l = (SHOP.langs || []).find(x => x.code === I18N.lang);
+    return (l && l.short) || I18N.lang.toUpperCase();
+}
+
 /* ---------- 页面工具 ---------- */
 const util = {
     /* 获取 URL 参数 */
@@ -283,7 +289,7 @@ function renderNav() {
             </div>` : ""}
             <div class="nav-right">
                 <div class="lang-switch">
-                    <button class="lang-btn" id="lang-btn">🌐 <span class="lang-code" id="lang-code">${util.esc(I18N.lang.toUpperCase())}</span></button>
+                    <button class="lang-btn" id="lang-btn">🌐 <span class="lang-code" id="lang-code">${util.esc(langShort())}</span></button>
                     <div class="lang-menu" id="lang-menu"></div>
                 </div>
                 <div class="auth-area" id="auth-area"></div>

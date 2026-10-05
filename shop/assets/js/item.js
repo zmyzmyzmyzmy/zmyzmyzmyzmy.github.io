@@ -24,6 +24,18 @@
     document.getElementById("inp-captcha").placeholder = i18n("图形验证码");
     document.getElementById("item-desc").innerHTML = (item.desc || "").split("\n").map(p => `<p>${util.esc(i18n(p))}</p>`).join("");
 
+    /* ---------- 封面点击放大（对应原站点封面看大图） ---------- */
+    document.getElementById("item-cover").addEventListener("click", () => {
+        const mask = document.createElement("div");
+        mask.className = "hd-layer-mask cover-zoom";
+        const img = document.createElement("img");
+        img.src = item.cover;
+        img.alt = i18n(item.name);
+        mask.appendChild(img);
+        document.body.appendChild(mask);
+        mask.addEventListener("click", () => mask.remove());
+    });
+
     /* ---------- 数量加减 ---------- */
     const numInput = document.getElementById("inp-num");
     document.querySelector(".change-num-sub").addEventListener("click", () => {
