@@ -28,6 +28,7 @@
                         ${shipmentBadge(order.delivery_status)}
                     </div>
                 </div>
+                ${order.ship_to ? `<div class="ship-to-line">📬 ${i18n("自动发货至")}：${util.esc(order.ship_to)}</div>` : ""}
                 <div class="card-display">${util.esc(order.secret || "")}</div>
                 ${order.leave_message ? `<div class="mt-3" style="white-space:pre-line;font-size:13px;color:var(--sub);">${util.esc(order.leave_message)}</div>` : ""}
             </div>` : "";

@@ -279,6 +279,7 @@ img { max-width: 100%; display: block; }
 .shipment-badge { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
 .shipment-waiting { background: rgba(245,158,11,.14); color: #d97706; }
 .shipment-paid { background: rgba(82,196,26,.14); color: #389e0d; }
+.ship-to-line { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #237804; background: rgba(82,196,26,.1); border: 1px solid rgba(82,196,26,.25); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; }
 .card-display {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 13px; line-height: 1.75; white-space: pre-wrap; word-break: break-all;

@@ -219,14 +219,19 @@ const treasure = {
 .acg-secret__note-title{display:flex;align-items:center;gap:6px;font-size:12px;opacity:.7;margin-bottom:6px;}
 .acg-secret__note-title svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .acg-secret__note-body{font-size:13px;line-height:1.75;white-space:pre-line;word-break:break-word;max-height:180px;overflow:auto;}
-.acg-secret__note-body p:last-child{margin-bottom:0;}`;
+.acg-secret__note-body p:last-child{margin-bottom:0;}
+.acg-secret__ship{display:flex;align-items:flex-start;gap:8px;border-radius:10px;padding:10px 12px;background:rgba(82,196,26,.12);border:1px solid rgba(82,196,26,.35);color:#237804;font-size:13px;line-height:1.6;}
+.acg-secret__ship b{font-weight:700;}`;
         document.head.appendChild(el);
     },
-    show(code, leaveMessage) {
+    show(code, leaveMessage, shipTo) {
         this.style();
         const o = String(code == null ? "" : code);
         const note = leaveMessage
             ? `<div class="acg-secret__note"><div class="acg-secret__note-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>${i18n("使用说明")}</span></div><div class="acg-secret__note-body">${util.esc(leaveMessage)}</div></div>`
+            : "";
+        const ship = shipTo
+            ? `<div class="acg-secret__ship">📬 <div><b>${i18n("自动发货成功")}！</b>${i18n("卡密已自动发送至")} ${util.esc(shipTo)}</div></div>`
             : "";
         const layer = document.createElement("div");
         layer.className = "hd-layer";
@@ -235,6 +240,7 @@ const treasure = {
             <div class="hd-layer-body acg-secret-wrap">
                 <div class="hd-layer-title">${i18n("您购买的宝贝信息")}:</div>
                 <div class="acg-secret">
+                    ${ship}
                     <div class="acg-secret__code">${util.esc(o)}</div>
                     <div class="acg-secret__bar">
                         <button type="button" class="acg-secret__btn" data-act="copy"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>${i18n("复制")}</span></button>
