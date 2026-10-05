@@ -105,7 +105,6 @@
             delivery_status: 0,   // 0=等待发货 1=已发货
             secret: secret,
             leave_message: item.note || "",
-            ship_to: /@/.test(contact) ? `${i18n("邮箱")}：${contact}` : `${i18n("联系方式")}：${contact}`,
             create_time: formatTime(),
             pay_time: null
         });

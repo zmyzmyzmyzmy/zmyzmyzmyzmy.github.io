@@ -28,13 +28,14 @@ const SHOP = {
     footer: "红豆商城 · 自动发货",
     contact_placeholder: "请输入联系方式",
 
-    /* ---------- 分类（5 个） ---------- */
+    /* ---------- 分类（6 个） ---------- */
     categories: [
         { id: 1, name: "三角洲",      icon: "assets/uploads/cat_delta.jpg" },
         { id: 2, name: "和平精英",    icon: "assets/uploads/cat_pubg.jpg" },
         { id: 3, name: "王者荣耀",    icon: "assets/uploads/cat_wzry.jpg" },
         { id: 4, name: "手机完美环境", icon: "assets/uploads/cat_phone.jpg" },
-        { id: 5, name: "售后教程1-1服务", icon: "assets/uploads/cat_service.jpg" }
+        { id: 5, name: "售后教程1-1服务", icon: "assets/uploads/cat_service.jpg" },
+        { id: 6, name: "测试",         icon: "assets/uploads/cat_delta.jpg" }
     ],
 
     /* ---------- 商品 ---------- */
@@ -61,7 +62,10 @@ const SHOP = {
 
         /* 售后教程1-1服务 */
         { id: 13, name: "售后教程服务",   category: 5, price: 50,  cover: "assets/uploads/cat_service.jpg", stock: 1, desc: "售后教程1-1服务，下单后由客服一对一处理，自动发货。", keys: ["HD-AFT-SVC-001", "HD-AFT-SVC-002"], note: "付款后请加客服QQ，客服会在一对一服务中为你处理。" },
-        { id: 14, name: "一对一指导",     category: 5, price: 100, cover: "assets/uploads/cat_service.jpg", stock: 1, desc: "售后教程1-1服务·一对一指导，下单后由客服一对一处理，自动发货。", keys: ["HD-AFT-TUT-001", "HD-AFT-TUT-002"], note: "付款后请加客服QQ，客服会在一对一服务中为你处理。" }
+        { id: 14, name: "一对一指导",     category: 5, price: 100, cover: "assets/uploads/cat_service.jpg", stock: 1, desc: "售后教程1-1服务·一对一指导，下单后由客服一对一处理，自动发货。", keys: ["HD-AFT-TUT-001", "HD-AFT-TUT-002"], note: "付款后请加客服QQ，客服会在一对一服务中为你处理。" },
+
+        /* 测试 */
+        { id: 99, name: "测试商品", category: 6, price: 1, cover: "assets/uploads/cat_delta.jpg", stock: 999, desc: "测试商品：付款后凭订单号在『订单查询』中查看卡密。", keys: ["TEST-0001-AAAA", "TEST-0002-BBBB", "TEST-0003-CCCC", "TEST-0004-DDDD", "TEST-0005-EEEE"], note: "测试用卡密，每单自动发放一条。" }
     ],
 
     /* ---------- 支付方式（图标为内嵌SVG，不用额外图片文件） ---------- */
@@ -123,8 +127,9 @@ const I18N_EN = {
     "用户名或密码错误": "Wrong username or password", "登录成功": "Signed in successfully",
     "库存不足": "Out of stock", "下单成功，请完成支付": "Order created, please complete payment",
     "支付成功": "Payment successful",
-    "自动发货成功": "Auto-delivery successful",
-    "卡密已自动发送至": "Card keys auto-sent to",
+    "自动发货成功": "Delivery successful",
+    "发货成功": "Delivery successful",
+    "凭订单号可在订单查询中查看卡密": "Check your card keys via Order Lookup with this order no.",
     "自动发货至": "Auto-delivered to",
     "邮箱": "Email",
     "分享链接复制成功，快去分享给朋友吧！": "Share link copied! Share it with friends!",
@@ -173,8 +178,9 @@ const I18N_TW = {
     "用户名或密码错误": "用戶名或密碼錯誤", "登录成功": "登入成功",
     "库存不足": "庫存不足", "下单成功，请完成支付": "下單成功，請完成支付",
     "支付成功": "支付成功",
-    "自动发货成功": "自動發貨成功",
-    "卡密已自动发送至": "卡密已自動發送至",
+    "自动发货成功": "發貨成功",
+    "发货成功": "發貨成功",
+    "凭订单号可在订单查询中查看卡密": "憑訂單號可在訂單查詢中查看卡密",
     "自动发货至": "自動發貨至",
     "邮箱": "郵箱",
     "分享链接复制成功，快去分享给朋友吧！": "分享連結複製成功，快去分享給朋友吧！",
@@ -223,8 +229,9 @@ const I18N_JA = {
     "用户名或密码错误": "ユーザー名またはパスワードが間違っています", "登录成功": "ログイン成功",
     "库存不足": "在庫不足", "下单成功，请完成支付": "注文が作成されました。支払いを完了してください",
     "支付成功": "支払い成功",
-    "自动发货成功": "自動配信成功",
-    "卡密已自动发送至": "カードキーを自動送信しました",
+    "自动发货成功": "発送成功",
+    "发货成功": "発送成功",
+    "凭订单号可在订单查询中查看卡密": "注文番号で注文照会からカードキーを確認できます",
     "自动发货至": "自動配信先",
     "邮箱": "メール",
     "分享链接复制成功，快去分享给朋友吧！": "共有リンクをコピーしました！友達に共有しましょう！",

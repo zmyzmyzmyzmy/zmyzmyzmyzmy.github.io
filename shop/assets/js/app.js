@@ -224,14 +224,14 @@ const treasure = {
 .acg-secret__ship b{font-weight:700;}`;
         document.head.appendChild(el);
     },
-    show(code, leaveMessage, shipTo) {
+    show(code, leaveMessage, tradeNo) {
         this.style();
         const o = String(code == null ? "" : code);
         const note = leaveMessage
             ? `<div class="acg-secret__note"><div class="acg-secret__note-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>${i18n("使用说明")}</span></div><div class="acg-secret__note-body">${util.esc(leaveMessage)}</div></div>`
             : "";
-        const ship = shipTo
-            ? `<div class="acg-secret__ship">📬 <div><b>${i18n("自动发货成功")}！</b>${i18n("卡密已自动发送至")} ${util.esc(shipTo)}</div></div>`
+        const ship = tradeNo
+            ? `<div class="acg-secret__ship">📦 <div><b>${i18n("发货成功")}！</b>${i18n("订单号")}：${util.esc(tradeNo)}<div style="opacity:.85;font-weight:400;margin-top:2px;">${i18n("凭订单号可在订单查询中查看卡密")}</div></div></div>`
             : "";
         const layer = document.createElement("div");
         layer.className = "hd-layer";

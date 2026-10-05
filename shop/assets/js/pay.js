@@ -12,8 +12,8 @@
         return;
     }
     if (order.status === 1) {
-        /* 已支付：直接展示卡密（含自动发货信息） */
-        treasure.show(order.secret, order.leave_message, order.ship_to);
+        /* 已支付：直接展示卡密（含订单号发货信息） */
+        treasure.show(order.secret, order.leave_message, order.trade_no);
         document.getElementById("btn-paid").textContent = i18n("查看卡密");
     }
 
@@ -57,7 +57,7 @@
     /* 我已支付 */
     document.getElementById("btn-paid").addEventListener("click", () => {
         if (order.status === 1) {
-            treasure.show(order.secret, order.leave_message, order.ship_to);
+            treasure.show(order.secret, order.leave_message, order.trade_no);
             return;
         }
         orderStore.update(order.trade_no, {
@@ -68,7 +68,7 @@
         order.status = 1;
         message.success(i18n("支付成功"));
         setTimeout(() => {
-            treasure.show(order.secret, order.leave_message, order.ship_to);
+            treasure.show(order.secret, order.leave_message, order.trade_no);
             document.getElementById("btn-paid").textContent = i18n("查看卡密");
         }, 500);
     });
