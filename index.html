@@ -3,28 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>欢迎访问</title>
+<title>红豆</title>
 <meta name="description" content="探索更多精彩内容">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="particles" id="particles"></div>
+<!-- ===== 顶部导航栏 ===== -->
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="logo">
+            <span class="logo-icon">红</span>
+            <span class="logo-text" id="logo-text">红豆</span>
+        </div>
 
-<div class="container">
-    <div class="avatar-wrapper">
-        <div class="avatar-ring"></div>
-        <img class="avatar" id="site-avatar" src="" alt="avatar">
+        <nav class="main-nav">
+            <a class="nav-item" href="#" id="nav-home">红豆</a>
+            <a class="nav-item active" href="#" id="nav-shop">🛒 购物</a>
+            <a class="nav-item" href="#" id="nav-order">📄 订单查询</a>
+        </nav>
+
+        <div class="topbar-right">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search-input" placeholder="搜索商品关键词..">
+            </div>
+            <div class="user-box">
+                <span class="user-avatar">红</span>
+                <div class="user-info">
+                    <span class="user-name">红豆用户</span>
+                    <span class="user-balance">余额 ¥0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== 主内容区 ===== -->
+<main class="content">
+
+    <!-- 公告栏 -->
+    <div class="notice">
+        <span class="notice-icon">📢</span>
+        <span class="notice-text" id="announcement"></span>
     </div>
 
-    <div class="title-area">
-        <h1 class="site-title" id="site-title">欢迎访问</h1>
-        <p class="site-subtitle" id="site-subtitle">探索更多精彩内容</p>
+    <!-- 购买区 -->
+    <section class="shop">
+        <h2 class="section-title">🛒 购买</h2>
+
+        <!-- 分类标签 -->
+        <div class="category-tabs" id="category-tabs"></div>
+
+        <!-- 商品网格 -->
+        <div class="product-grid" id="product-grid"></div>
+
+        <!-- 无结果提示 -->
+        <div class="empty-tip" id="empty-tip" style="display:none;">没有找到相关商品</div>
+    </section>
+</main>
+
+<!-- ===== 悬浮按钮 ===== -->
+<div class="float-btns">
+    <div class="float-btn" id="btn-qr" title="二维码">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+            <path d="M14 14h3v3h-3z"></path>
+            <path d="M21 14v3h-3"></path>
+            <path d="M14 21h3v-3"></path>
+            <path d="M18 18h3"></path>
+        </svg>
     </div>
+    <a class="float-btn" id="btn-cs" href="#" target="_blank" rel="noopener noreferrer" title="联系客服">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </a>
+</div>
 
-    <div class="links-list" id="links-list"></div>
-
-    <div class="footer" id="site-footer"></div>
+<!-- ===== 弹窗（订单查询 / 二维码） ===== -->
+<div class="modal-mask" id="modal-mask" style="display:none;">
+    <div class="modal" id="modal-box">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div class="modal-body" id="modal-body"></div>
+        <button class="modal-close" id="modal-close">关 闭</button>
+    </div>
 </div>
 
 <script src="assets/js/config.js"></script>
