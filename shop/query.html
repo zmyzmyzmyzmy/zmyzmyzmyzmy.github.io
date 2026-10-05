@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红豆商城">
+    <title>订单查询 - 红豆</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav id="site-nav"></nav>
+
+    <main class="container">
+        <div class="query-wrap">
+            <div class="panel">
+                <div class="panel-header">
+                    <span class="icon">📂</span>
+                    <h6 class="panel-title" data-i18n="订单查询">订单查询</h6>
+                </div>
+                <div class="panel-body">
+                    <form class="query-form-row" id="query-form">
+                        <input type="text" class="form-control" name="keywords" placeholder="订单号/联系方式" id="inp-keywords">
+                        <button type="submit" class="btn btn-gradient btn-search-query">
+                            <i>🔍</i> <span data-i18n="查询订单">查询订单</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="loading-state" id="loading-state" style="display:none;">
+                <i>🔄</i> <span data-i18n="正在查询">正在查询...</span>
+            </div>
+            <div class="no-results" id="no-results" style="display:none;" data-i18n="没有找到相关订单">没有找到相关订单</div>
+            <div id="order-results"></div>
+        </div>
+    </main>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/query.js"></script>
+</body>
+</html>

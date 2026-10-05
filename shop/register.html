@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红豆商城">
+    <title>注册 - 红豆</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav id="site-nav"></nav>
+
+    <main class="container">
+        <div class="auth-wrap">
+            <div class="auth-card">
+                <img class="auth-logo" src="assets/uploads/logo.png" onerror="this.style.display='none'" alt="Logo">
+                <div class="auth-title">
+                    <span data-i18n="登录红豆，优惠多多！">登录红豆，优惠多多！</span>
+                </div>
+                <form class="auth-form" id="register-form" autocomplete="off">
+                    <div>
+                        <input type="text" class="form-control" name="username" placeholder="" id="inp-username" required>
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" name="password" placeholder="" id="inp-password" required>
+                    </div>
+                    <div class="captcha-group" style="width:100%;">
+                        <input type="text" class="form-control captcha-input" placeholder="" name="captcha" id="inp-captcha" style="flex:1;width:auto;" required>
+                        <canvas id="captcha-canvas" width="90" height="40"></canvas>
+                    </div>
+                    <button type="submit" class="btn auth-btn" data-i18n="注册">注册</button>
+                </form>
+                <div class="auth-footer">
+                    <span data-i18n="已有账号？去登录">已有账号？去登录</span>
+                    <a href="login.html" data-i18n="登录">登录</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

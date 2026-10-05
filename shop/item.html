@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红豆商城">
+    <title>商品 - 红豆</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav id="site-nav"></nav>
+
+    <main class="container" style="padding-bottom: 40px;">
+        <div class="panel mt-3">
+            <div class="panel-body">
+                <div class="item-detail-layout">
+                    <!-- 左：封面图 -->
+                    <div class="item-cover-wrap">
+                        <img class="item-cover" id="item-cover" src="" alt="">
+                    </div>
+
+                    <!-- 右：购买信息 -->
+                    <div>
+                        <h4 id="item-name" style="font-size:20px;"></h4>
+                        <div class="item-head">
+                            <span class="badge-soft badge-soft-success" data-i18n="自动发货">自动发货</span>
+                            <span class="badge-soft badge-soft-primary" id="item-sold"></span>
+                            <span class="badge-soft badge-soft-success item-stock" id="item-stock"></span>
+                            <span class="badge-soft badge-soft-info shared-button" id="btn-share" title="share">🔗</span>
+                        </div>
+                        <div class="abacus">
+                            <div class="price"><span class="unit">¥</span><span id="item-price"></span></div>
+                        </div>
+
+                        <form class="form-vstack" id="buy-form" autocomplete="off">
+                            <!-- 联系方式 -->
+                            <div>
+                                <label class="form-label" data-i18n="联系方式">联系方式</label>
+                                <input type="text" name="contact" class="form-control" placeholder="" id="inp-contact" required>
+                            </div>
+
+                            <!-- 数量 -->
+                            <div>
+                                <label class="form-label" data-i18n="数量">数量</label>
+                                <div class="qty-group">
+                                    <button type="button" class="change-num-sub">-</button>
+                                    <input type="number" name="num" class="form-control text-center" value="1" id="inp-num" min="1">
+                                    <button type="button" class="change-num-add">+</button>
+                                </div>
+                            </div>
+
+                            <!-- 验证码 -->
+                            <div>
+                                <label class="form-label" data-i18n="验证码">验证码</label>
+                                <div class="captcha-group">
+                                    <input type="text" name="captcha" class="form-control captcha-input" placeholder="" id="inp-captcha" required>
+                                    <canvas id="captcha-canvas" width="90" height="40"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- 支付方式 -->
+                            <div class="cash-pay">
+                                <label class="form-label" data-i18n="支付方式">支付方式</label>
+                                <div class="pay-list" id="pay-list"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品详情 -->
+        <div class="panel mt-3 item-detail">
+            <div class="panel-header">
+                <span class="icon">📋</span>
+                <h6 class="panel-title" data-i18n="商品详情">商品详情</h6>
+            </div>
+            <div class="panel-body">
+                <div class="acg-rich" id="item-desc"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/item.js"></script>
+</body>
+</html>

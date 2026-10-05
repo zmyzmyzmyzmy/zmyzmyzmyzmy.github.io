@@ -1,144 +1,68 @@
 (() => {
-    const $ = (id) => document.getElementById(id);
+    // ===== 从配置渲染页面 =====
+    document.body.style.backgroundImage = `url('${SITE_CONFIG.background}')`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundAttachment = 'fixed';
 
-    // ===== 基础信息 =====
-    document.title = SITE_CONFIG.siteName + " - 红豆商城";
-    $('logo-text').textContent = SITE_CONFIG.siteName;
-    $('announcement').textContent = SITE_CONFIG.announcement;
+    document.title = SITE_CONFIG.title;
+    document.getElementById('site-title').textContent = SITE_CONFIG.title;
+    document.getElementById('site-subtitle').textContent = SITE_CONFIG.subtitle;
+    document.getElementById('site-avatar').src = SITE_CONFIG.avatar;
+    document.getElementById('site-footer').innerHTML = SITE_CONFIG.footer;
 
-    // 客服按钮链接
-    $('btn-cs').href = SITE_CONFIG.qqCustomer;
-
-    // ===== 分类状态 =====
-    let currentCategory = SITE_CONFIG.categories[0] || '';
-    let searchKeyword = '';
-
-    // ===== 渲染分类标签 =====
-    const tabsBox = $('category-tabs');
-    SITE_CONFIG.categories.forEach((cat, i) => {
-        const tab = document.createElement('div');
-        tab.className = 'category-tab' + (i === 0 ? ' active' : '');
-        tab.textContent = cat;
-        tab.dataset.category = cat;
-        tab.addEventListener('click', () => {
-            currentCategory = cat;
-            searchKeyword = '';
-            $('search-input').value = '';
-            document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            renderProducts();
-        });
-        tabsBox.appendChild(tab);
+    // 链接卡片
+    const list = document.getElementById('links-list');
+    SITE_CONFIG.links.forEach((link, i) => {
+        const a = document.createElement('a');
+        a.className = 'link-card';
+        a.href = link.url;
+        a.target = link.url.startsWith('http') ? '_blank' : '_self';
+        a.rel = 'noopener noreferrer';
+        a.style.setProperty('--card-color', link.color);
+        a.style.animationDelay = `${(i + 1) * 0.1}s`;
+        a.innerHTML = `
+            <div class="link-icon" style="background: ${link.color}20;">
+                <img src="${link.icon}" alt="">
+            </div>
+            <div class="link-info">
+                <div class="link-title shimmer">${link.title}</div>
+            </div>
+            <svg class="link-arrow" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/>
+            </svg>`;
+        list.appendChild(a);
     });
 
-    // ===== 渲染商品 =====
-    function renderProducts() {
-        const grid = $('product-grid');
-        grid.innerHTML = '';
-
-        // 过滤：先按分类，再按搜索关键词（名称或分类名匹配）
-        let list = SITE_CONFIG.products.filter(p => p.category === currentCategory);
-        if (searchKeyword) {
-            const kw = searchKeyword.toLowerCase();
-            list = SITE_CONFIG.products.filter(p =>
-                (p.title + p.category).toLowerCase().includes(kw)
-            );
+    // ===== 粒子背景 =====
+    const particles = document.getElementById('particles');
+    if (particles) {
+        const count = Math.min(12, Math.floor(window.innerWidth / 100));
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 60 + 10;
+            p.style.cssText = `
+                width: ${size}px; height: ${size}px;
+                left: ${Math.random() * 100}%;
+                animation-duration: ${Math.random() * 15 + 15}s;
+                animation-delay: ${Math.random() * 10}s;
+            `;
+            particles.appendChild(p);
         }
-
-        const emptyTip = $('empty-tip');
-        emptyTip.style.display = list.length ? 'none' : 'block';
-
-        list.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
-                <div class="card-image">
-                    <img src="${p.img}" alt="${p.title}" loading="lazy">
-                    ${p.tag ? `<span class="card-tag">${p.tag}</span>` : ''}
-                </div>
-                <div class="card-body">
-                    <div class="product-name">${p.title}</div>
-                    <div class="product-price">¥${p.price.toFixed(2)}</div>
-                    <div class="product-meta">
-                        <span>库存: ${p.stock}</span>
-                        <span>已售: ${p.sold}</span>
-                    </div>
-                </div>`;
-            // 点击商品卡片 → 提示联系客服购买
-            card.addEventListener('click', () => {
-                openModal('商品详情', `「${p.title}」<br>价格：¥${p.price.toFixed(2)}<br><br>虚拟产品售出不退，购买请直接联系客服，付款后自动发货。`);
-            });
-            grid.appendChild(card);
-        });
     }
 
-    // ===== 搜索 =====
-    $('search-input').addEventListener('input', (e) => {
-        searchKeyword = e.target.value.trim();
-        renderProducts();
-    });
-
-    // ===== 弹窗 =====
-    const modalMask = $('modal-mask');
-    function openModal(title, html) {
-        $('modal-title').textContent = title;
-        $('modal-body').innerHTML = html;
-        modalMask.style.display = 'flex';
-    }
-    function closeModal() {
-        modalMask.style.display = 'none';
-    }
-    $('modal-close').addEventListener('click', closeModal);
-    modalMask.addEventListener('click', (e) => {
-        if (e.target === modalMask) closeModal();
-    });
-
-    // ===== 顶部导航 =====
-    $('nav-home').addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        $('nav-home').classList.add('active');
-    });
-    $('nav-shop').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        $('nav-shop').classList.add('active');
-        $('search-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // 订单查询
-    $('nav-order').addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        $('nav-order').classList.add('active');
-        openModal('订单查询', `
-            <input class="order-input" id="order-input" placeholder="请输入订单号或手机号" maxlength="30">
-            <button class="order-btn" id="order-submit">查 询</button>
-            <div class="order-result" id="order-result" style="display:none;">未找到相关订单，如有疑问请联系客服。</div>`);
-        const submit = $('order-submit');
-        const result = $('order-result');
-        submit.addEventListener('click', () => {
-            const v = $('order-input').value.trim();
-            if (!v) {
-                result.textContent = '请输入订单号或手机号';
-                result.style.display = 'block';
-                return;
-            }
-            result.textContent = '未找到相关订单，如有疑问请联系客服。';
-            result.style.display = 'block';
+    // ===== 卡片悬停 =====
+    document.querySelectorAll('.link-card').forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            this.style.boxShadow = `
+                0 12px 40px rgba(0, 0, 0, 0.12),
+                0 4px 12px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15)
+            `;
         });
-        $('order-input').addEventListener('keydown', (ev) => {
-            if (ev.key === 'Enter') submit.click();
+        card.addEventListener('mouseleave', function () {
+            this.style.boxShadow = '';
         });
-        $('order-input').focus();
     });
-
-    // ===== 悬浮按钮 =====
-    $('btn-qr').addEventListener('click', () => {
-        openModal('联系客服', '请添加客服 QQ：<a href="' + SITE_CONFIG.qqCustomer + '" target="_blank" rel="noopener noreferrer" style="color:#ff6b9d;font-weight:600;">点此加客服QQ</a><br><br>或扫码添加微信客服（请点击右下角客服按钮）。');
-    });
-
-    // ===== 首次渲染 =====
-    renderProducts();
 })();

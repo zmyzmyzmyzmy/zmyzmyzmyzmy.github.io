@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红豆商城">
+    <title>收银台 - 红豆</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav id="site-nav"></nav>
+
+    <main class="container">
+        <div class="pay-wrap">
+            <div class="pay-card">
+                <div class="pay-title" data-i18n="扫码支付">扫码支付</div>
+                <div class="pay-sub" id="pay-sub"></div>
+                <div class="qr-box">
+                    <canvas id="qr-canvas" width="180" height="180"></canvas>
+                </div>
+                <div class="pay-no" id="pay-no"></div>
+                <div class="pay-amount" id="pay-amount"></div>
+                <button class="btn btn-gradient" style="width:100%;height:48px;font-size:16px;" id="btn-paid" data-i18n="我已支付">我已支付</button>
+                <div class="pay-sub" style="margin-top:12px;" data-i18n="请使用对应APP扫描二维码">请使用对应APP扫描二维码</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/pay.js"></script>
+</body>
+</html>

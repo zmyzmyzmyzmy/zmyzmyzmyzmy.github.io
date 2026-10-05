@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="红豆商城">
+    <title>购物 - 红豆</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="has-search">
+    <nav id="site-nav"></nav>
+
+    <main class="container" style="padding-bottom: 40px;">
+        <!-- 公告 -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="icon">📢</span>
+                <h6 class="panel-title" data-i18n="公告">公告</h6>
+            </div>
+            <div class="panel-body">
+                <div class="notice-text" id="notice-text"></div>
+            </div>
+        </div>
+
+        <!-- 购买 / 分类 -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="icon">🛒</span>
+                <h6 class="panel-title" data-i18n="购买">购买</h6>
+            </div>
+            <div class="panel-body">
+                <div class="cats" id="cats"></div>
+                <div class="item-list" id="item-list"></div>
+                <div class="empty-tip" id="empty-tip" style="display:none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/shop.js"></script>
+</body>
+</html>
